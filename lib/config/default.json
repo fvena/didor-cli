@@ -1,0 +1,13 @@
+{
+  "repositories": [
+    {
+      "repo": "https://github.com/fvena/didor-restful-mysql-boilerplate.git",
+      "name": "API RESTful con Node/Express/MySQL",
+      "value": "api-mysql"
+    },{
+      "repo": "",
+      "name": "APP con Vue",
+      "value": "app-vue"
+    }
+  ]
+}
