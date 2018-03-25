@@ -1,14 +1,19 @@
 #!/usr/bin/env node
 
-const program = require('commander');
-const chalk = require('chalk');   // Colorea las salidas
-const clear = require('clear');   // Limpia el terminal
-const figlet = require('figlet'); // Crea un título ASCII
+process.env["NODE_CONFIG_DIR"] = __dirname + "/lib/config/";
 
-const init = require('./lib/init');
+const program = require('commander');   // Framework para desarrollar CLI
+const chalk   = require('chalk');       // Colorea las salidas del terminal
+const clear   = require('clear');       // Limpia el terminal
+const figlet  = require('figlet');      // Crea un título ASCII
+
+const init    = require('./lib/init/init');  // Herramientas para inicializar un proyecto
 
 
-// Limpia el terminal
+require('pretty-error').start();
+
+
+// Limpiar el terminal
 clear();
 
 
@@ -17,17 +22,20 @@ console.log(chalk.yellow(figlet.textSync('DIDOR', { horizontalLayout: 'full' }))
 console.log(chalk.green(figlet.textSync('GENERATOR', { verticalLayout: 'full' })));
 
 
-// Opciones de nuestro CLI
-// didor -v
-// didor -h
-// didor init
+/****************************************************************
+ * OPCIONES
+ ****************************************************************/
 program
   .version('0.0.1', '-v, --version')
   .option('init', 'Inicializa un proyecto')
   .option('option1', 'Opción 1')
   .option('option2', 'Opción 2');
 
-// Menú de ayuda
+
+
+/****************************************************************
+ * MENÚ DE AYUDA
+ ***************************************************************/
 program.on('--help', function(){
   console.log('');
   console.log('  Ejemplos:');
@@ -42,9 +50,12 @@ program.on('--help', function(){
 program.parse(process.argv);
 
 
-// Compruebo la opción elegida
+
+/****************************************************************
+ * ACCIONES
+ ***************************************************************/
 if (program.init) {
-  init.run();
+  init.run();   // Inicializar un proyecto
 } else if (program.option1) {
   console.log('Opción 1')
 } else if (program.option2) {
