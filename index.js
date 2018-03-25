@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const program = require('commander');
 const chalk = require('chalk');   // Colorea las salidas
 const clear = require('clear');   // Limpia el terminal
