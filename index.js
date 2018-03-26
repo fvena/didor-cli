@@ -1,6 +1,8 @@
 #!/usr/bin/env node
+/* eslint dot-notation: 0 */
 
-process.env["NODE_CONFIG_DIR"] = __dirname + "/lib/config/";
+
+process.env['NODE_CONFIG_DIR'] = `${__dirname}/lib/config/`;
 
 const program = require('commander');   // Framework para desarrollar CLI
 const chalk   = require('chalk');       // Colorea las salidas del terminal
@@ -19,9 +21,9 @@ console.log(chalk.yellow(figlet.textSync('DIDOR', { horizontalLayout: 'full' }))
 console.log(chalk.green(figlet.textSync('GENERATOR', { verticalLayout: 'full' })));
 
 
-/****************************************************************
+/** **************************************************************
  * OPCIONES
- ****************************************************************/
+ *************************************************************** */
 program
   .version('0.0.1', '-v, --version')
   .option('init', 'Inicializa un proyecto')
@@ -29,11 +31,10 @@ program
   .option('option2', 'Opción 2');
 
 
-
-/****************************************************************
+/** **************************************************************
  * MENÚ DE AYUDA
- ***************************************************************/
-program.on('--help', function(){
+ ************************************************************** */
+program.on('--help', () => {
   console.log('');
   console.log('  Ejemplos:');
   console.log('');
@@ -47,16 +48,15 @@ program.on('--help', function(){
 program.parse(process.argv);
 
 
-
-/****************************************************************
+/** **************************************************************
  * ACCIONES
- ***************************************************************/
+ ************************************************************** */
 if (program.init) {
   init.run();   // Inicializar un proyecto
 } else if (program.option1) {
-  console.log('Opción 1')
+  console.log('Opción 1');
 } else if (program.option2) {
-  console.log('Opción 2')
+  console.log('Opción 2');
 } else {
   program.help();
 }
