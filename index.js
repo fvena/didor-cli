@@ -10,9 +10,6 @@ const figlet  = require('figlet');      // Crea un título ASCII
 const init    = require('./lib/init/init');  // Herramientas para inicializar un proyecto
 
 
-require('pretty-error').start();
-
-
 // Limpiar el terminal
 clear();
 

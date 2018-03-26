@@ -39,6 +39,7 @@
     "config": "^1.30.0",
     "del": "^3.0.0",
     "figlet": "^1.2.0",
+    "fs": "0.0.1-security",
     "inquirer": "^5.1.0",
     "nodegit": "^0.21.2",
     "nodegit-kit": "^0.17.0",
