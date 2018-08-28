@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang=es>
+  <head>
+    <meta charset=UTF-8>
+    <title>{{ name }}</title>
+    <meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1">
+    <meta name=description content=Description>
+    <meta name=viewport content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <link href=/static/css/app.00d7875a39780af989c1f203b203b23e.css rel=stylesheet>
+  </head>
+  <body>
+    <div id=app></div>
+    <script>
+      const config = {
+        api: {
+          url: 'http://airzoneservice.airzonesl.es:3080/api/auth/v1/login',
+          user: 'fvena@altracorporacion.es',
+          password: 'foobarfoo',
+        },
+        versions: [
+          {
+            name: '0.9.0',
+            basePath: '/static/docs/',
+          },
+          {
+            name: '0.8.0',
+            basePath: '/static/docs/',
+          },
+          {
+            name: '0.7.0',
+            basePath: '/static/docs/',
+          },
+        ],
+      };
+
+      window.$docsify = {
+        name: '{{ name }}',
+        basePath: config.versions[0].basePath,
+        homepage: '{{ homepage }}',
+        demo: '{{ demo }}',
+        sassVar: '{{ sassVar }}',
+        loadNavbar: '_navbar.md',
+        loadSidebar: '_sidebar.md',
+        routerMode: 'hash',
+        mergeNavbar: true,
+        auto2top: true,
+        pagination: {
+          previousText: 'Anterior',
+          nextText: 'Siguiente',
+        },
+      };
+    </script>
+    <script type=text/javascript src=/static/js/manifest.2ae2e69a05c33dfc65f8.js></script>
+    <script type=text/javascript src=/static/js/vendor.f6f098002d886063f8d1.js></script>
+    <script type=text/javascript src=/static/js/app.0db9dda988f457126ea5.js></script>
+  </body>
+</html>

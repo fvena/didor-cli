@@ -1,0 +1,71 @@
+#!/usr/bin/env node
+
+// process.env['NODE_CONFIG_DIR'] = `${__dirname}/lib/config/`; // eslint-disable-line
+
+const program = require('commander');   // Framework para desarrollar CLI
+const chalk   = require('chalk');       // Colorea las salidas del terminal
+const clear   = require('clear');       // Limpia el terminal
+const figlet  = require('figlet');      // Crea un título ASCII
+const updateNotifier = require('update-notifier');
+
+const pkg     = require('../package.json');
+const run     = require('../lib');
+
+require('pretty-error').start();
+
+
+// Limpiar el terminal
+clear();
+
+
+// Muestra el saludo inicial
+console.log(chalk.yellow(figlet.textSync('DIDOR', { horizontalLayout: 'full' })));
+console.log(chalk.green(figlet.textSync('GENERATOR', { verticalLayout: 'full' })));
+
+
+/** **************************************************************
+ * OPCIONES
+ *************************************************************** */
+
+// Opciones generales
+program
+  .version(pkg.version, '-v, --version')
+  .option('-c, --config <path>', 'set config path (defaults to /didor.conf.json)');
+
+
+// Inicializar un proyecto
+// program
+//   .command('init')
+//   .description('Inicializa un proyecto')
+//   .action(() => {
+//     run.init();
+//   });
+
+
+// Inicializa un servidor local para ver la documentación
+program
+  .command('docs')
+  .description('Run local server to view docs.')
+  .action((options) => {
+    const config = options.config || '/didor.config.json';
+    run.docs(config);
+  });
+
+
+/** **************************************************************
+ * MENÚ DE AYUDA
+ ************************************************************** */
+program.on('--help', () => {
+  console.log('');
+  console.log('  Ejemplos:');
+  console.log('');
+  console.log('    $ didor -v');
+  // console.log('    $ didor init');
+  console.log('    $ didor docs');
+  console.log('');
+});
+
+program.parse(process.argv);
+
+// Muestra un mensaje indicando si hay una versión nueva
+updateNotifier({ pkg }).notify();
